@@ -29,6 +29,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'tpgSAT', // Usually your GitHub org/user name.
   projectName: 'system-docs-site', // Usually your repo name.
+  trailingSlash: false, // Set to true if you want to add a trailing slash to URLs
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
