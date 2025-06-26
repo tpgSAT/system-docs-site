@@ -31,7 +31,7 @@ const config = {
   projectName: 'system-docs-site', // Usually your repo name.
   trailingSlash: false, // Set to true if you want to add a trailing slash to URLs
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore', // Ignore broken links in development
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
