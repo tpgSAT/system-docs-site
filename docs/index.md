@@ -1,3 +1,8 @@
+---
+slug: /
+sidebar_position: 1
+---
+
 # SAT ドキュメントサイト
 
 #### [はじめに](/first/README.md)
