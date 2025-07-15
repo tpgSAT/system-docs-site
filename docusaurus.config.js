@@ -69,7 +69,7 @@ const config = {
         title: 'システム班ドキュメントサイト',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/system_icon.png',
         },
         items: [
           {
