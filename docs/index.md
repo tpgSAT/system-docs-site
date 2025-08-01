@@ -19,7 +19,6 @@ Conohaからさくらへの移行に伴い、一部修正が完了していな�
 
 ### [その他](others)
 
-
 ## リンク集
 
 [SAT の GitHub](https://github.com/tpgSAT)  
@@ -28,7 +27,6 @@ Conohaからさくらへの移行に伴い、一部修正が完了していな�
 [さくらのレンタルサーバー Web メール](https://secure.sakura.ad.jp/rscontrol/?webmail=1)  
 [ConoHa コントロールパネル](https://www.conoha.jp/login/)  
 [CODE サーバー 管理コンソール](https://portal.tpgd.jp:9980/browser/dist/admin/admin.html)  
-[TPG 公式サイト](http://tpgd.jp/)   
+[TPG 公式サイト](http://tpgd.jp/)  
 [Google PageSpeed Insights](https://pagespeed.web.dev/)  
-[Google Search Console](https://search.google.com/u/0/search-console?resource_id=sc-domain%3Atpgd.jp) 
-
+[Google Search Console](https://search.google.com/u/0/search-console?resource_id=sc-domain%3Atpgd.jp)  
