@@ -1,5 +1,5 @@
 ---
-slug: /site/tutorial/astro
+slug: /site/astro
 sidebar_position: 2
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: /site/tutorial/html
+slug: /site/html
 sidebar_position: 1
 ---
 
