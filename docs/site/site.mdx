@@ -7,9 +7,12 @@ sidebar_position: 1
 
 ## チュートリアル
 
-
 ```mdx-code-block
-import DocCardList from '@theme/DocCardList';
+import LinkCard from '@site/src/components/LinkCard';
+import LinkCardContainer from '@site/src/components/LinkCardContainer';
 
-<DocCardList />
+<LinkCardContainer>
+    <LinkCard type="folder" text="HTML, CSS導入" href="/site/html"/>
+    <LinkCard type="folder" text="Astro導入" href="/site/astro"/>
+</LinkCardContainer>
 ```
