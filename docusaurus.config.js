@@ -68,7 +68,7 @@ const config = {
       navbar: {
         title: 'システム班ドキュメントサイト',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'TPG SAT Logo',
           src: 'img/system_icon.png',
         },
         items: [
