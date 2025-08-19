@@ -1,0 +1,118 @@
+#   ホバー処理
+　ある要素にマウスをかざしたときにその要素が変化する表現をホバーといいます。例えば今作っているヘッダーのボタンは、ホバーで下線が現れるようにします。掲示物募集のボタンは色の反転です。
+
+
+　ホバー処理は、要素のクラス名のあとに`:hover`をつけて指定します。つまり今回書くコードは次のようになります。
+```css
+.header_item:hover {
+    border-bottom: 2px solid #181818;
+}
+```
+　border-bottomは.header_itemに先ほど白色で設定しました。今回は同じ要素に#181818という色を設定しているので、ホバーしたときは#fffよりもこちらが優先され、黒色の下線がつきます。
+
+　ホバーの時に書く項目は、通常状態に同じプロパティがあれば上書き、なければ追加されます。header_itemにはborder-bottomを設定せず、ホバーの時だけ設定しても大丈夫です。ただし、上下中央揃えをしているため、ホバーすると下線がついた分若干位置がずれることになります(実際やってみるとわかる)。
+
+あえてそういう表現にするのもありだと思いますが、今回は位置ずれが起こらないようにしました。
+
+
+　ここまでやってきたことで、「掲示物募集」のボタンが大体作れます。カラーコードや余白幅などは画像の通りなので、まずは自分でやってみてください。(※クラス名は複数付与することができます。`class="name1 name2"`のように半角スペースで区切ってください)
+
+　完成のコードは次の通りです。
+####    HTML
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Taki Fes 2023 | Taki Plaza Gardener</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./takifes.css">
+    </head>
+    <body>
+        <header>
+            <div class="header_items">
+                <a href="/index.htmlu">
+                    <img src="./_img/logo_set.png" class="header_logo">
+                </a>
+                <a href="https://www.test.tpgd.jp/whatsnew/index.html" class="header_item">What's New</a>
+                <a href="https://www.test.tpgd.jp/aboutus/index.html#aboutus" class="header_item">About us</a>
+                <a href="https://www.test.tpgd.jp/hoya/index.html" class="header_item">Hoya</a>
+                <a href="https://www.test.tpgd.jp/blog/index.html" class="header_item">Blog</a>
+                <a href="https://www.test.tpgd.jp/joinus/index.html" class="header_item">Join us</a>
+                <a href="https://www.test.tpgd.jp/keijibutu/index.html" class="header_item keijibutu">掲示物募集</a>
+            </div>
+        </header>
+
+        <!-- ここにメイン部分を書く -->
+
+        <footer></footer>
+    </body>
+</html>
+```
+####    CSS
+```css
+@charset "utf-8";
+header {
+    width: 100%;
+    height: 90px;
+    background-color: #fff;             
+    border-bottom: 2px solid #BADA55
+}
+.header_items {
+    width: 70%;
+    height: 90px;
+    margin-left: 15%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.header_logo {
+    display: block;
+    height: 60px;
+    width: auto;
+    margin: 15px 15px 15px 0px;
+}
+.header_item {
+    display: inline-block;
+    flex-grow: 1;
+    font-size: 1.2vw;
+    color: #181818;
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+    letter-spacing: 0.12em;
+    padding-bottom: 0.75vw;
+    white-space: nowrap;
+}
+.header_item:hover {
+    border-bottom: 2px solid #181818;
+}
+.keijibutu {
+    background-color: #E60693;
+    font-weight: bold;
+    padding: 1em 1.5em;
+    margin-left: 1.5vw;
+    color: #fff;
+}
+.keijibutu:hover {
+    color: #E60693;
+    background-color: #fff;
+    border: 0.5px solid #181818;
+}
+```
+　ついでに、マウスをかざしたときの変化をゆっくりフェード風にしておきます。こういう細かいこだわりのためのコードは書くとキリがないので、適宜調べるのがいいと思います。(一応、TPGの公式HPにつかったコードをまとめた一覧ページもつくる予定です。)
+
+　ホバー時の変化をゆっくりにするのはヘッダーに限らずページ全体に適用したいので、CSSで指定するセレクタとしてheader_itemではなくaにし、aタグすべてにこの処理が効くようにします。aはクラス名ではなくタグの種類なので、CSSに書く際に前に . はいりません。
+```css
+a {
+    display: block;
+    text-decoration: none;
+    transition: 0.5s;<!-- 変化を0.5秒かけて行う -->
+}
+```
+　こういう、ある種類のタグすべてに同じ処理を適用するコードは、CSSの上の方にまとめて書くことをおすすめします。上2行は、aタグはblock要素にして扱うことが多く、デフォルトの下線も消して使うことがほとんどなので一括で処理してしまうために書きました。
+
+
+　header_itemには`display: inline-block;`を指定しているので矛盾した処理のように思えますが、より直接書かれている指示が優先的に適用されます。つまり、header_itemクラスはaタグの要素ですが、aタグ全体への指示よりもheader_itemを指定している指示の方が優先されるということです。
+
+ホバー時の処理で`:hover`をつけるとつけていないときの要素が上書きされると書きましたが、それもこのためです。

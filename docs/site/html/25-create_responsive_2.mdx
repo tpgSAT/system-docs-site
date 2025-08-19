@@ -1,0 +1,122 @@
+#   レスポンシブデザインをつくる②
+
+　これまで書いてきたCSSから最低限の変更に留めるのがベストです。逆に、この先自分でページを作るときはレスポンシブデザインをつくることを考えながらコードを書いていったり、うまくいかなくなったらHTMLを思い切って書き換えることも必要です。
+
+
+また、基本的にレスポンシブデザインはCSSのみ書きますが、たまにHTMLを書き換えることもあります。今回は、トップ画像のロゴの下に書いてある日時がスマホ版では画像の下にありますが、絶対位置・相対位置指定をしているため画像の領域からはみ出させるのがちょっとめんどくさいです。なので、top_imageクラスの外に同じ内容のpタグを複製しておき、これをPC版では非表示に、逆にtop_imageクラス内のpタグをスマホ版では非表示にします。
+####    HTML
+```html
+<div class="top_image">
+    <!-- 内容 -->
+</div>
+<p class="phone_p">6.27(TUE)～<br>@Taki Plaza B2F 野外ステージ
+    <br>12:45 開場 12:55 開演<br>※雨天順延
+</p>
+<div class="fade_takifes">
+    <!-- 内容 -->
+```
+　非表示にするCSSは`display: none;`です。これはその要素の存在自体をないものにします。他に透明度(0～1で百分率指定)を1にする`opacity: 1;`や、要素の領域は残したまま見えないものにする`visibility: hidden;`があります。今回は要素の領域が残ると謎の空白がある状態になってしまうので、`display: none;`を使います。
+####    CSS
+```css
+<!-- takifes.cssに書く -->
+.top_imge p{
+    <!-- 内容 -->
+}
+.phone_p {
+    display: none;
+}
+```
+　あとは、レスポンシブデザインの仕様書通りにtakifes_resp.cssを書いていくだけです。仕様書を載せようと思っていたんですが~~めちゃめちゃ力尽きたので~~、実際に運用をする際は今のところこういった細かい指定のついた仕様書がなくある程度自分でデザインを組む必要があるので、実際のページを参考にして自分でやってみてください。ぴったり同じでなくても、同じような表示になっていれば十分です。
+
+　takifes_resp.cssに書くコードは次の通りです。
+```css
+@media screen and (max-width:600px) {
+    .modal {
+        width: 80%;
+        height: 65vh;
+        margin-top: 12.5vh;
+        margin-left: 10%;
+    }
+    .shuryo {
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: 2rem;
+    }
+    .modal_item p{
+        border-bottom: none;
+    }
+    .modal_item img{
+        width: 70px;
+        height: auto;
+    }
+    .top_image{
+        height: 60vw;
+    }
+    .haikei{
+        height: 60vw;
+    }
+    .top_image p{
+        margin-left: 7%;
+    }
+    .logo {
+        width: 70%;
+        height: auto;
+        left: 15%;
+        top:20px;
+
+    }
+    .top_image p {
+        display: none;
+    }
+    .phone_p {
+        display: block;
+        width: 90%;
+        margin-left: 5%;
+        font-size: 1.5rem;
+        color: #242626;
+        margin-bottom:0;
+        padding-bottom: 0;
+    }
+    .buttons, .buttons a{
+        display: none;
+    }
+    .setumei, .chuui, .artists, .drinks{
+        width: 100%;
+        margin-left:0%;
+    }
+    .setumei span{
+        font-size: 2.5rem;
+        white-space: nowrap;
+    }
+    h3{
+        margin-left: 5%;
+    }
+    .item{
+        width: 90%;
+        height: 180px;
+    }
+    .item img{
+        width: 18vw;
+        height: 18vw;
+        top:10%;
+        
+    }
+    .name{
+        font-size: 1.6rem;
+        left: 40%;
+    }
+    .date{
+        top: 50%;
+        left: 5%;
+    }
+
+    .item2{
+        display: none;
+    }
+    .drinks{
+        width: 80%;
+        margin-left: 10%;
+        display: block;
+    }
+}
+```

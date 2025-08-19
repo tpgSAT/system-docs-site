@@ -1,0 +1,21 @@
+#   レスポンシブデザインをつくる①
+　では実際に作っていきたいのですが、本来であればヘッダーとフッターはつくる必要がありません。TPGの公式HPは全ページに同じヘッダーとフッターを使っているため、各ページでの設定が不要になるようにしてあるからです。
+
+　そのやり方はJavaScriptの説明のときに書きますが、とりあえずヘッダーとフッターのCSSはポータルからダウンロードし、[header.css](https://portal.tpgd.jp/index.php/f/248476)と[footer.css](https://portal.tpgd.jp/index.php/f/248466)をHPフォルダ内に置き、それぞれ読み込むためのコードをindex.htmlの`head`タグ内に追加してください。
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Taki Fes 2023 | Taki Plaza Gardener</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./takifes.css">
+        <link rel="stylesheet" href="./takifes_resp.css">
+        <link rel="stylesheet" href="./header.css">
+        <link rel="stylesheet" href="./footer.css">
+    </head>
+```
+　こうなっていれば大丈夫です。takifes.cssに書いたヘッダーやフッターに関するCSSは不要なので、気になる人は削除しても大丈夫です。面倒ならそのままでいいです。
+
+
+　ここからはtakifes.cssを左画面、takifes_resp.cssを右画面に画面分割して作業するとやりやすいと思います。
