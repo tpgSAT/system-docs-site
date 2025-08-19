@@ -5,19 +5,22 @@ sidebar_position: 2
 
 # インフラ系
 
-## チュートリアル
+## 講習会
 
-### [レンタルサーバ講習会](/infra/rs/)
+import LinkCard from '@site/src/components/LinkCard';
+import LinkCardContainer from '@site/src/components/LinkCardContainer';
 
-### [VPS講習会](/infra/vps/)
+<LinkCardContainer>
+    <LinkCard type="folder" text="レンタルサーバ講習会" href="/infra/rs/"/>
+    <LinkCard type="folder" text="VPS講習会" href="/infra/vps/"/>
+    <LinkCard type="folder" text="Docker講習会" href="/infra/docker/"/>
+</LinkCardContainer>
 
 ## システム班が管理するリソース
 
-### [Nextcloud](#)
-
-### [Collabora Online(CODEサーバ)](#)
-
-### [Docsaurus](#)
-
-### [Grafana](#)
-
+<LinkCardContainer>
+    <LinkCard type="internal" text="Nextcloud" href="#"/>
+    <LinkCard type="internal" text="Collabora Online(CODEサーバ)" href="#"/>
+    <LinkCard type="internal" text="Docsaurus" href="#"/>
+    <LinkCard type="internal" text="Grafana" href="#"/>
+</LinkCardContainer>
