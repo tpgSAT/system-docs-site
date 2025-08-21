@@ -128,6 +128,14 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      announcementBar: {
+        id: 'transfer_in_progress',
+        content:
+          '現在ドキュメントサイトは<a href="https://sat.tpgd.jp">Docsify</a>から移行中です。一部のドキュメントはまだ更新されていませんが、順次対応していきます。',
+        backgroundColor: '#4169E1',
+        textColor: '#ffffff',
+        isCloseable: true,
+      },
     }),
 };
 
