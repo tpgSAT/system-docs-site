@@ -4,3 +4,26 @@ sidebar_position: 4
 ---
 
 # VPS
+
+Nextcloud, Grafana等をホストしています。
+
+## 基本情報
+
+- OS: Ubuntu 24.04.1 LTS
+- メモリ: 4GB
+- リバースプロキシ: Caddy
+- 契約: さくらのVPS
+
+## 構成図
+
+## アプリケーション
+
+| ソフトウェア | ポート | ドメイン | 説明 |
+|--------------|-------|----------|------|
+| Nextcloud    | 8180->80 | portal.tpgd.jp | Docker Composeで構成    |
+| Grafana      | 3000->8200  | status.tpgd.jp   | VPSのモニタリング用のwebインターフェースを提供するソフトウェア。Docker Composeで構成     |
+| Collabora Online | 8101->9980  | office.tpgd.jp | Docker Composeで構成     |
+| Cadvisor     | 8280->8080  |   | Dockerコンテナの監視のため。Docker Composeで構成     |
+| Prometheus   | 9090->9090  |   | メトリクスのエクスポートのため。Docker Composeで構成     |
+| redis        | 16379->6379 |   | インメモリキャッシュサーバ。Nextcloudのパフォーマンス向上のため。Docker Composeで構成     |
+| mariadb      | 3306 |   | NextcloudのDB。Docker Composeで構成     |
