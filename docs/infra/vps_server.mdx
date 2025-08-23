@@ -16,14 +16,54 @@ Nextcloud, Grafana等をホストしています。
 
 ## 構成図
 
+```mermaid
+flowchart LR
+
+    Internet@{ img: "https://api.iconify.design/mdi:web.svg", label: "Internet", h: 60, constraint: "on" }
+    Caddy@{ img: "https://api.iconify.design/catppuccin:caddy.svg", label: "Caddy", h: 60, constraint: "on" }
+    Nextcloud@{ img: "https://api.iconify.design/tabler:brand-nextcloud.svg", label: "Nextcloud", h: 60, constraint: "on" }
+    Collabora@{ img: "https://api.iconify.design/arcticons:collabora-office.svg", label: "Collabora Online", h: 60, constraint: "on" }
+    Grafana@{ img: "https://api.iconify.design/logos:grafana.svg", label: "Grafana", h: 60, constraint: "on" }
+    MariaDB@{ img: "https://api.iconify.design/logos:mariadb-icon.svg", label: "MariaDB", h: 60, constraint: "on" }
+    Redis@{ img: "https://api.iconify.design/logos:redis.svg", label: "Redis", h: 60, constraint: "on" }
+    Prometheus@{ img: "https://api.iconify.design/logos:prometheus.svg", label: "Prometheus", h: 60, constraint: "on" }
+    cAdvisor@{ img: "https://api.iconify.design/material-symbols-light:owl-outline-rounded.svg", label: "cAdvisor", h: 60, constraint: "on" }
+
+    Internet -->|80,443/tcp| Caddy
+    Caddy -->|8180/tcp| Nextcloud
+    Caddy -->|8101/tcp| Collabora
+    Caddy -->|8200/tcp| Grafana
+    Nextcloud -->|3600/tcp| MariaDB
+    Nextcloud -->|16379/tcp| Redis
+    Grafana -->|9090/tcp| Prometheus
+    Prometheus -->|8280/tcp| cAdvisor
+
+    classDef default fill: none, stroke-width:0px;
+
+subgraph docker
+    Nextcloud
+    Collabora
+    Grafana
+    MariaDB
+    Redis
+    Prometheus
+    cAdvisor
+end
+
+subgraph vps
+    Caddy
+    docker
+end
+```
+
 ## アプリケーション
 
-| ソフトウェア | ポート | ドメイン | 説明 |
+| ソフトウェア | ポート | ドメイン | メモ |
 |--------------|-------|----------|------|
+| MariaDB      | 3306 |   | Docker Composeで構成     |
 | Nextcloud    | 8180->80 | portal.tpgd.jp | Docker Composeで構成    |
-| Grafana      | 3000->8200  | status.tpgd.jp   | VPSのモニタリング用のwebインターフェースを提供するソフトウェア。Docker Composeで構成     |
 | Collabora Online | 8101->9980  | office.tpgd.jp | Docker Composeで構成     |
-| Cadvisor     | 8280->8080  |   | Dockerコンテナの監視のため。Docker Composeで構成     |
-| Prometheus   | 9090->9090  |   | メトリクスのエクスポートのため。Docker Composeで構成     |
-| redis        | 16379->6379 |   | インメモリキャッシュサーバ。Nextcloudのパフォーマンス向上のため。Docker Composeで構成     |
-| mariadb      | 3306 |   | NextcloudのDB。Docker Composeで構成     |
+| Grafana      | 8200->3000  | status.tpgd.jp   | Docker Composeで構成     |
+| cAdvisor     | 8280->8080  |   | Docker Composeで構成     |
+| Prometheus   | 9090->9090  |   | Docker Composeで構成     |
+| Redis        | 16379->6379 |   | Docker Composeで構成     |

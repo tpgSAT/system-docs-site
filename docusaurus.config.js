@@ -14,6 +14,12 @@ const config = {
   tagline: 'TPGシステム班のドキュメントサイトです。',
   favicon: 'img/favicon.ico',
 
+  // Mermaidを有効化
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -129,6 +135,7 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
       announcementBar: {
+        // アナウンスメントバーの追加
         id: 'transfer_in_progress',
         content:
           '現在ドキュメントサイトは<a href="https://sat.tpgd.jp">Docsify</a>から移行中です。一部のドキュメントはまだ更新されていませんが、順次対応していきます。',
