@@ -143,6 +143,32 @@ const config = {
         textColor: '#ffffff',
         isCloseable: true,
       },
+      algolia: {
+      // The application ID provided by Algolia
+      appId: 'JVLNP8GFJA',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'bbe7b3d526e301d3698fe7bfac107fd5',
+
+      indexName: 'System Document Site',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: false,
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      //... other Algolia params
+    },
     }),
 };
 
