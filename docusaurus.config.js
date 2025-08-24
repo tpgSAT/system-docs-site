@@ -69,6 +69,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Declare some <meta> tags
+      metadata: [
+        // Algolia site verification
+        {name: 'algolia-site-verification', content: '4C89CD8BA61FC942'}
+      ],
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
